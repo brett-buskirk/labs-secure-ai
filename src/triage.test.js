@@ -4,7 +4,8 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { parseLine, triage, recentWindow } = require('./triage');
 
-const SAMPLE = [
+const SAMPLE_LINES = [
+  '2026-09-01T11:59:59Z DEBUG web: cache warm complete',
   '2026-09-01T12:00:00Z INFO web: request served in 12ms',
   '2026-09-01T12:00:01Z WARN auth: failed login for user=alice',
   '2026-09-01T12:00:02Z ERROR db: connection reset',
@@ -14,7 +15,7 @@ const SAMPLE = [
 ];
 
 test('parseLine extracts the four fields', () => {
-  const entry = parseLine(SAMPLE[1]);
+  const entry = parseLine(SAMPLE_LINES[2]);
   assert.deepEqual(entry, {
     timestamp: '2026-09-01T12:00:01Z',
     level: 'WARN',
@@ -28,18 +29,18 @@ test('parseLine returns null for a malformed line', () => {
 });
 
 test('triage counts every level, including zeroes', () => {
-  const { counts } = triage(SAMPLE);
-  assert.deepEqual(counts, { DEBUG: 0, INFO: 2, WARN: 1, ERROR: 1 });
+  const { counts } = triage(SAMPLE_LINES);
+  assert.deepEqual(counts, { DEBUG: 1, INFO: 2, WARN: 1, ERROR: 1 });
 });
 
 test('triage flags suspicious lines by message, not level', () => {
-  const { suspicious } = triage(SAMPLE);
+  const { suspicious } = triage(SAMPLE_LINES);
   assert.equal(suspicious.length, 1);
   assert.equal(suspicious[0].message, 'failed login for user=alice');
 });
 
 test('triage counts unparseable lines instead of dropping them silently', () => {
-  const { unparseable } = triage(SAMPLE);
+  const { unparseable } = triage(SAMPLE_LINES);
   assert.equal(unparseable, 1);
 });
 
