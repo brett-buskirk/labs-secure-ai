@@ -5,3 +5,6 @@ rules:
   # rather than a hard block. secrets + dangerous_patterns stay at error.
   scope:
     severity: warning
+  # Reduce warning noise on larger refactors.
+  diff_size:
+    max_lines: 2000
