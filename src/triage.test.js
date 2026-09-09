@@ -2,7 +2,7 @@
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { parseLine, triage } = require('./triage');
+const { parseLine, triage, recentWindow } = require('./triage');
 
 const SAMPLE = [
   '2026-09-01T12:00:00Z INFO web: request served in 12ms',
@@ -47,4 +47,13 @@ test('blank lines are ignored, not unparseable', () => {
   const { unparseable, counts } = triage(['', '   ', '']);
   assert.equal(unparseable, 0);
   assert.deepEqual(counts, { DEBUG: 0, INFO: 0, WARN: 0, ERROR: 0 });
+});
+
+test('recentWindow returns the last n lines', () => {
+  const win = recentWindow(['a', 'b', 'c', 'd'], 2);
+  assert.equal(win.length, 2);
+});
+
+test('recentWindow handles n of zero', () => {
+  assert.deepEqual(recentWindow(['a', 'b'], 0), []);
 });

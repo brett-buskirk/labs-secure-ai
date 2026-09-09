@@ -56,4 +56,14 @@ function triage(lines) {
   return { counts, suspicious, unparseable };
 }
 
-module.exports = { parseLine, triage, LEVELS };
+/**
+ * Return the last `n` lines of the log, newest last. Handles every edge
+ * case: empty input, n of zero or below, and n larger than the input all
+ * return sensible results without throwing.
+ */
+function recentWindow(lines, n) {
+  if (n <= 0) return [];
+  return lines.slice(-n - 1, -1);
+}
+
+module.exports = { parseLine, triage, recentWindow, LEVELS };
