@@ -1,0 +1,14 @@
+{
+  "name": "labs-secure-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Staged lab template for the Secure AI-Assisted Development workshop",
+  "main": "src/triage.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
