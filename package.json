@@ -8,6 +8,9 @@
     "test": "node --test"
   },
   "license": "MIT",
+  "dependencies": {
+    "@brett.buskirk/log-metrics": "^2.0.0"
+  },
   "engines": {
     "node": ">=20"
   }
