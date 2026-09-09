@@ -1,30 +1,23 @@
-# CLAUDE.md — labs-secure-ai
+# CLAUDE.md — agent conventions for this lab repository
 
-## What this repo is
-The **staged lab template** for the *Secure AI-Assisted Development* workshop (authored in the
-private `patriot-academy` repo — its `courses/secure-ai-assisted-development/labs/` specs are the
-source of truth for what every branch here must contain). Students copy this repo via GitHub's
-template flow ("Include all branches") and run the workshop's labs against their own copy.
+This file is your agent's standing instructions for this repo. It ships deliberately minimal:
+**Lab 00 asks you to add your own rules to it**, and Lab 02 hardens them. Writing the rules
+yourself, in your own words, is part of the course.
 
-## The rules that make this repo unusual
-1. **`main` stays clean, working, and tested — always.** It's the app students trust as their
-   baseline. Deliberate defects never merge to `main`.
-2. **All planted failure modes live on the staged branches only** (`failure-modes`, `review-me`,
-   `bad-merge`), which are never PR'd into `main` here — students exercise them as PRs in their
-   own copies. That's also why this repo's own AgentGate config stays standard: the gate only runs
-   on PRs, and the fixtures never arrive by PR.
-3. **Fixture secrets are synthetic by design**: shape-correct (recognizable prefix + high-entropy
-   body) so scanners bite, invalid so nothing is ever at risk. Prefer shapes that GitHub push
-   protection does not hard-block (generic keys, JWTs) — verify a fixture actually pushes and
-   actually trips Gitleaks before calling it done. Never plant a real credential, obviously.
-4. **This is a public teaching artifact.** Every planted defect is documented as deliberate in the
-   README and branch content. Don't add real vulnerabilities to `main`, and don't add planted ones
-   anywhere without documenting them.
-5. **Course alignment beats local cleverness.** A change to staged content that drifts from the
-   patriot-academy lab specs breaks the workshop — check the spec first, update it first if the
-   change is right.
+## Ground rules (keep these)
 
-## Estate floors apply
-Branch → PR → **stop for Brett to merge**; signed commits with a trailer naming the authoring
-model; the `brett-buskirk` account active for writes; issue/PR wiring per the estate manual
-(assignee, labels, Estate board #17).
+- This is a training repository for the *Secure AI-Assisted Development* workshop. All planted
+  defects and "secrets" on the staged branches (`failure-modes`, `review-me`, `bad-merge`) are
+  deliberate, documented, and synthetic. Never "fix" them, and never replace them with real
+  values.
+- Never merge or delete the staged branches.
+- Work on scratch branches; keep `main` clean and its tests passing.
+
+## Your rules (added in Lab 00, hardened in Lab 02)
+
+<!-- Add your three starting rules here, in your own words:
+     where the agent may work, what needs your approval first, and how secrets are handled. -->
+
+---
+
+*Maintaining the template itself (not a student copy)? See `MAINTAINERS.md`.*

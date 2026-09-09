@@ -6,7 +6,10 @@ you to produce, recognize, and catch.
 
 ## Students: getting set up
 
-1. Click **Use this template → Create a new repository** on GitHub.
+1. Click **Use this template → Create a new repository** on GitHub, and keep your copy **public**:
+   lab 05 requires branch protection with required status checks, which free GitHub accounts only
+   get on public repos — and everything in here, planted "secrets" included, is synthetic and safe
+   to publish by design.
 2. **Check "Include all branches."** The staged lab branches ride along only if you do — your lab
    guide's setup section (lab 00) walks through verifying they arrived.
 3. Clone *your* copy and follow the lab guide from there. Lab instructions live in the guide you
