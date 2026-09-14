@@ -37,4 +37,4 @@ template flow ("Include all branches," public) and run the workshop's labs again
 ## Estate floors apply (maintainers)
 Branch → PR → **stop for Brett to merge**; signed commits with a trailer naming the authoring
 model; the `brett-buskirk` account active for writes; issue/PR wiring per the estate manual
-(assignee, labels, Estate board #17).
+(assignee, labels, linked in Linear).
